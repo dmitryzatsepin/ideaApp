@@ -1,0 +1,10 @@
+@use '../../styles/_vars.scss' as vars;
+@use '../../styles/_mixins.scss' as mixins;
+
+.text {
+  font-size: 14px;
+
+  & > *:not(:first-child) {
+    margin-top: 10px;
+  }
+}
