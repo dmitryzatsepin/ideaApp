@@ -17,13 +17,17 @@
     "include-media": "1.4.0"
   },
   "devDependencies": {
+    "@eslint/js": "^9.20.0",
     "@typescript-eslint/eslint-plugin": "^8.19.1",
     "@typescript-eslint/parser": "^8.19.1",
+    "b": "^2.0.1",
     "concurrently": "^9.1.2",
-    "eslint": "^9.20.1",
+    "eslint": "8",
     "eslint-config-prettier": "^9.1.0",
     "eslint-config-react-app": "^7.0.1",
     "eslint-config-standard-with-typescript": "^43.0.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^5.2.3",
     "eslint-plugin-react-hooks": "^5.1.0",
     "eslint-plugin-react-refresh": "^0.4.16",
     "husky": "^9.1.7",

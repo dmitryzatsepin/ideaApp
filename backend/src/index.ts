@@ -4,6 +4,7 @@ import { applyTrpcToExpressApp } from './lib/trpc'
 import { createAppContext, type AppContext } from './lib/ctx'
 import { trpcRouter } from './router'
 import { applyPassportToExpressApp } from './lib/passport'
+import { env } from './lib/env'
 
 void (async () => {
   let ctx: AppContext | null = null
@@ -16,9 +17,8 @@ void (async () => {
     })
     applyPassportToExpressApp(expressApp, ctx)
     await applyTrpcToExpressApp(expressApp, ctx, trpcRouter)
-    const PORT = 3000
-    expressApp.listen(PORT, () => {
-      console.info(`Server is running on http://localhost:${PORT}`)
+    expressApp.listen(env.PORT, () => {
+      console.info(`Server is running on http://localhost:${env.PORT}`)
     })
   } catch (error) {
     console.error(error)
