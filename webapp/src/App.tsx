@@ -12,6 +12,7 @@ import './styles/global.scss'
 import { SignUpPage } from './pages/auth/SignUpPage'
 import { SignInPage } from './pages/auth/SignInPage'
 import { SignOutPage } from './pages/auth/SignOutPage'
+import { EditProfilePage } from './pages/auth/EditProfilePage'
 
 export const App = () => {
   return (
@@ -25,6 +26,7 @@ export const App = () => {
               <Route path={routes.getSignInRoute()} element={<SignInPage />} />
               <Route path={routes.getAllIdeasRoute()} element={<AllIdeasPage />} />
               <Route path={routes.getNewIdeaRoute()} element={<NewIdeaPage />} />
+              <Route path={routes.getEditProfileRoute()} element={<EditProfilePage />} />
               <Route path={routes.getViewIdeaRoute(routes.viewIdeaRouteParams)} element={<ViewIdeaPage />} />
               <Route path={routes.getEditIdeaRoute(routes.editIdeaRouteParams)} element={<EditIdeaPage />} />
               <Route path="*" element={<NotFoundPage />} />

@@ -1,6 +1,6 @@
 import { Link, Outlet } from 'react-router-dom'
 import { useMe } from '../../lib/ctx'
-import { getAllIdeasRoute, getNewIdeaRoute, getSignInRoute, getSignOutRoute, getSignUpRoute } from '../../lib/routes'
+import { getAllIdeasRoute, getNewIdeaRoute, getSignOutRoute, getSignUpRoute, getSignInRoute } from '../../lib/routes'
 import css from './index.module.scss'
 
 export const Layout = () => {
@@ -20,6 +20,11 @@ export const Layout = () => {
               <li className={css.item}>
                 <Link className={css.link} to={getNewIdeaRoute()}>
                   Add Idea
+                </Link>
+              </li>
+              <li className={css.item}>
+                <Link className={css.link} to="/profile">
+                  Edit Profile
                 </Link>
               </li>
               <li className={css.item}>
