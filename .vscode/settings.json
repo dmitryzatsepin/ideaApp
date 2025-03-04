@@ -1,3 +1,4 @@
 {
-    "eslint.workingDirectories": ["backend", "webapp"]
+  "eslint.workingDirectories": ["backend", "webapp"],
+  "postman.settings.dotenv-detection-notification-visibility": false
 }
