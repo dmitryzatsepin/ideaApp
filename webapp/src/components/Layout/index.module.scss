@@ -1,6 +1,5 @@
 @use '../../styles/_vars.scss' as *;
 @use '../../styles/_mixins.scss' as *;
-@use '../../../node_modules/include-media/dist/include-media' as *;
 
 $breakpoint: '<=900px';
 
@@ -52,7 +51,6 @@ $breakpoint: '<=900px';
     padding: 20px 30px;
     @include media($breakpoint) {
       overflow: visible;
-      flex: 0 0 auto;
       height: auto;
     }
   }
