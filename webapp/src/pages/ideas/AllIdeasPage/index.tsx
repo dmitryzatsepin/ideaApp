@@ -11,8 +11,12 @@ import { useForm } from '../../../lib/form'
 import { getViewIdeaRoute } from '../../../lib/routes'
 import { trpc } from '../../../lib/trpc'
 import css from './index.module.scss'
+import { withPageWrapper } from '../../../lib/pageWrapper'
 
-export const AllIdeasPage = () => {
+export const AllIdeasPage = withPageWrapper({
+  title: 'All Ideas',
+  isTitleExact: true,
+})(() => {
   const { formik } = useForm({
     initialValues: { search: '' },
     validationSchema: zGetIdeasTrpcInput.pick({ search: true }),
@@ -81,4 +85,6 @@ export const AllIdeasPage = () => {
       )}
     </Segment>
   )
-}
+})
+
+export default AllIdeasPage
