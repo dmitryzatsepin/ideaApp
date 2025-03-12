@@ -11,6 +11,7 @@ import { FormItems } from '../../../components/FormItems'
 import { useForm } from '../../../lib/form'
 import { withPageWrapper } from '../../../lib/pageWrapper'
 import { canBlockIdeas, canEditIdea } from '@ideanick/backend/src/utils/can'
+import { Icon } from '../../../components/Icon'
 
 const LikeButton = ({ idea }: { idea: NonNullable<TrpcRouterOutput['getIdea']['idea']> }) => {
   const trpcUtils = trpc.useContext()
@@ -40,7 +41,7 @@ const LikeButton = ({ idea }: { idea: NonNullable<TrpcRouterOutput['getIdea']['i
         void setIdeaLike.mutateAsync({ ideaId: idea.id, isLikedByMe: !idea.isLikedByMe })
       }}
     >
-      {idea.isLikedByMe ? 'Unlike' : 'Like'}
+            <Icon size={32} className={css.likeIcon} name={idea.isLikedByMe ? 'likeFilled' : 'likeEmpty'} />
     </button>
   )
 }
