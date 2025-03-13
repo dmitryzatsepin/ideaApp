@@ -1,5 +1,6 @@
-@use '../../styles/_vars.scss' as *;
-@use '../../styles/_mixins.scss' as *;
+@use '../../styles/vars.scss' as *;
+@use '../../styles/mixins.scss' as *;
+@use '../../styles/include-media.scss' as *;
 
 $breakpoint: '<=900px';
 
@@ -7,6 +8,7 @@ $breakpoint: '<=900px';
   display: flex;
   flex-flow: row nowrap;
   height: 100%;
+
   @include media($breakpoint) {
     flex-flow: column nowrap;
   }
@@ -17,6 +19,7 @@ $breakpoint: '<=900px';
     flex: 0 0 200px;
     padding: 20px 30px;
     border-right: 1px solid $black;
+
     @include media($breakpoint) {
       overflow: visible;
       flex: 0 0 auto;
@@ -49,6 +52,7 @@ $breakpoint: '<=900px';
     overflow: auto;
     flex: 1 1 100%;
     padding: 20px 30px;
+
     @include media($breakpoint) {
       overflow: visible;
       height: auto;

@@ -69,6 +69,12 @@ importers:
       rimraf:
         specifier: ^6.0.1
         version: 6.0.1
+      stylelint:
+        specifier: ^16.13.0
+        version: 16.15.0(typescript@5.8.2)
+      stylelint-config-standard-scss:
+        specifier: ^14.0.0
+        version: 14.0.0(postcss@8.5.3)(stylelint@16.15.0(typescript@5.8.2))
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@22.13.9)(typescript@5.8.2)
@@ -175,9 +181,6 @@ importers:
       formik-validator-zod:
         specifier: ^2.0.1
         version: 2.2.0(formik@2.4.6(react@18.3.1))(zod@3.24.2)
-      include-media:
-        specifier: ^2.0.0
-        version: 2.0.0
       js-cookie:
         specifier: ^3.0.5
         version: 3.0.5
@@ -242,6 +245,9 @@ importers:
       globals:
         specifier: ^15.14.0
         version: 15.15.0
+      include-media:
+        specifier: ^2.0.0
+        version: 2.0.0
       prettier:
         specifier: ^3.4.2
         version: 3.5.3

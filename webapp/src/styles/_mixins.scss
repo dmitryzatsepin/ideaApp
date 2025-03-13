@@ -1,7 +1,6 @@
 @use 'sass:math';
-// @use 'include-media' as media;
-@use './_vars.scss' as *;
-@import '../../node_modules/include-media/dist/_include-media';
+@use 'include-media' as media;
+@use './vars.scss' as *;
 
 @mixin link($color: $blue, $hoverColor: $red) {
   color: $color;
@@ -30,7 +29,7 @@
 }
 
 @mixin loader($borderWidth, $size, $color) {
-  &:after {
+  &::after {
     content: '';
     border-radius: 50%;
     display: block;
