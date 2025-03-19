@@ -5,21 +5,27 @@ import fg from 'fast-glob'
 import _ from 'lodash'
 import { env } from './env'
 import process from 'node:process'
+import Handlebars from 'handlebars'
 
-const getHtmlTemplates = _.memoize(async () => {
+type HandlebarsTemplateDelegate = import('handlebars').TemplateDelegate;
+
+const getHbrTemplates = _.memoize(async () => {
   const htmlPathsPattern = path.resolve(process.cwd(), 'src/emails/dist/**/*.html')
   const htmlPaths = fg.sync(htmlPathsPattern)
-  const htmlTemplates: Record<string, string> = {}
+  const hbrTemplates: Record<string, HandlebarsTemplateDelegate> = {}
   for (const htmlPath of htmlPaths) {
     const templateName = path.basename(htmlPath, '.html')
-    htmlTemplates[templateName] = await fs.readFile(htmlPath, 'utf8')
+    const htmlTemplate = await fs.readFile(htmlPath, 'utf8')
+    hbrTemplates[templateName] = Handlebars.compile(htmlTemplate)
   }
-  return htmlTemplates
+  return hbrTemplates
 })
 
-const getHtmlTemplate = async (templateName: string) => {
-  const htmlTemplates = await getHtmlTemplates()
-  return htmlTemplates[templateName]
+const getEmailHtml = async (templateName: string, templateVariables: Record<string, string> = {}) => {
+  const hbrTemplates = await getHbrTemplates()
+  const hbrTemplate = hbrTemplates[templateName]
+  const html = hbrTemplate(templateVariables)
+  return html
 }
 
 const sendEmail = async ({
@@ -34,17 +40,16 @@ const sendEmail = async ({
   templateVariables?: Record<string, unknown>
 }) => {
   try {
-    const htmlTemplate = await getHtmlTemplate(templateName)
     const fullTemplateVaraibles = {
       ...templateVariables,
       homeUrl: env.WEBAPP_URL,
     }
+    const html = await getEmailHtml(templateName, fullTemplateVaraibles)
     console.info('sendEmail', {
       to,
       subject,
       templateName,
-      fullTemplateVaraibles,
-      htmlTemplate,
+      html,
     })
     return { ok: true }
   } catch (error) {
